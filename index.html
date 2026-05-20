@@ -193,19 +193,30 @@
             line-height: 1.5;
         }
 
-        /* GALLERY FRAMEWORK */
+        /* SCROLLABLE GALLERY GRID */
         .gallery-grid {
             display: grid;
             grid-template-columns: 100%;
-            gap: 20px;
-            justify-content: center;
+            gap: 15px;
+            max-height: 380px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        /* Soft scrollbar aesthetics for the gallery viewport */
+        .gallery-grid::-webkit-scrollbar {
+            width: 4px;
+        }
+        .gallery-grid::-webkit-scrollbar-thumb {
+            background: rgba(255, 56, 116, 0.2);
+            border-radius: 10px;
         }
 
         .frame-wrapper {
             background: white;
             padding: 8px;
             border-radius: 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
             border: 1px solid rgba(255,255,255,0.8);
         }
 
@@ -406,7 +417,13 @@
             <div class="view-pane" id="pane-gallery">
                 <div class="gallery-grid">
                     <div class="frame-wrapper">
-                        <img id="main-picture" src="us.jpg" alt="Our Portrait" onerror="tryAlternativeImages(this)">
+                        <img src="us.jpg" alt="Our Portrait 1" onerror="tryAlternativeImages(this)">
+                    </div>
+                    <div class="frame-wrapper">
+                        <img src="us2.jpg" alt="Our Portrait 2" onerror="this.src='us2.png'">
+                    </div>
+                    <div class="frame-wrapper">
+                        <img src="us3.jpg" alt="Our Portrait 3" onerror="this.src='us3.png'">
                     </div>
                 </div>
             </div>
