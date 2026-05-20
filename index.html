@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For Urboshi | From Abir ❤️</title>
+    <title>Urboshi & Abir | Eternal Manifesto ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
-        /* --- ARCHITECTURAL CSS DESIGN TOKENS --- */
+        /* --- DESIGN SYSTEM TOKENS --- */
         :root {
-            --bg-canvas: linear-gradient(135deg, #fff0f5 0%, #ffe3ee 100%);
-            --accent-primary: #ff3874;
-            --accent-secondary: #e61954;
-            --accent-gold: #d4af37;
-            --dark-velvet: #42001d;
-            --glass-panel: rgba(255, 255, 255, 0.82);
-            --glass-border: rgba(255, 255, 255, 0.6);
-            --shadow-premium: 0 30px 60px rgba(255, 56, 116, 0.15);
-            --text-main: #1f1218;
-            --text-sub: #615057;
+            --midnight-rose: linear-gradient(135deg, #2b0011 0%, #4a001e 50%, #1a000a 100%);
+            --accent-pink: #ff2d75;
+            --luxury-gold: #d4af37;
+            --glass-core: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-gold: #f3e5ab;
+            --text-white: #ffffff;
         }
 
         * {
@@ -27,174 +25,157 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: var(--bg-canvas);
+            font-family: 'Montserrat', sans-serif;
+            background: var(--midnight-rose);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
+            overflow: hidden;
             position: relative;
-            padding: 20px;
         }
 
-        /* Hardware Accelerated Particle Canvas */
+        /* Dual-Layer Particle System */
         canvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
             z-index: 1;
-            will-change: transform;
         }
 
-        /* --- APPLICATION PLATFORM LAYOUT --- */
+        /* --- THE APP SHELL (UI ARCHITECTURE) --- */
         .app-shell {
-            background: var(--glass-panel);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: var(--glass-core);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
             border: 1px solid var(--glass-border);
-            border-radius: 36px;
-            box-shadow: var(--shadow-premium), inset 0 1px 1px rgba(255, 255, 255, 0.5);
-            max-width: 500px;
-            width: 100%;
+            border-radius: 40px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+            max-width: 480px;
+            width: 92%;
             z-index: 10;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border-bottom: 2px solid var(--accent-pink);
         }
 
-        /* App Header Layout */
-        .app-header {
-            padding: 30px 25px 15px 25px;
+        .header-section {
+            padding: 40px 20px 20px 20px;
             text-align: center;
-            border-bottom: 1px solid rgba(255, 56, 116, 0.1);
         }
 
-        .app-header h1 {
-            color: var(--dark-velvet);
-            font-size: 24px;
+        .header-section h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--accent-pink);
+            font-size: 38px;
+            text-shadow: 0 0 15px rgba(255, 45, 117, 0.5);
+        }
+
+        .live-counter {
+            background: rgba(0,0,0,0.3);
+            padding: 10px 18px;
+            border-radius: 14px;
+            font-size: 11px;
+            color: var(--luxury-gold);
             font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .app-header p {
-            color: var(--accent-primary);
-            font-size: 13px;
-            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 4px;
+            letter-spacing: 1.5px;
+            display: inline-block;
+            margin-top: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
-        /* Modular Tab Switch Engine */
-        .nav-bar {
+        /* Navigation Architecture */
+        .nav-dock {
             display: flex;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 6px;
-            margin: 15px 20px;
+            background: rgba(0,0,0,0.3);
+            margin: 10px 20px;
+            padding: 5px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            gap: 4px;
+            gap: 5px;
         }
 
-        .tab-trigger {
+        .nav-btn {
             flex: 1;
-            padding: 10px 5px;
             background: none;
             border: none;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-sub);
+            color: rgba(255,255,255,0.5);
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 12px 0;
             cursor: pointer;
-            border-radius: 14px;
-            transition: all 0.25s ease;
-            text-align: center;
+            border-radius: 15px;
+            transition: 0.3s;
         }
 
-        .tab-trigger.active-tab {
-            background: var(--accent-primary);
+        .nav-btn.active {
+            background: var(--accent-pink);
             color: white;
-            box-shadow: 0 4px 12px rgba(255, 56, 116, 0.25);
+            box-shadow: 0 5px 15px rgba(255, 45, 117, 0.3);
         }
 
-        /* --- CONTENT MAIN INTERFACES --- */
-        .view-viewport {
-            padding: 15px 25px 35px 25px;
-            min-height: 380px;
-            display: flex;
-            flex-direction: column;
+        /* Viewport Logic */
+        .viewport {
+            padding: 20px 25px 40px 25px;
+            min-height: 400px;
         }
 
-        .view-pane {
+        .pane {
             display: none;
             opacity: 0;
-            animation: paneFadeIn 0.4s ease forwards;
+            animation: slideIn 0.5s ease forwards;
         }
 
-        .view-pane.active-pane {
+        .pane.active {
             display: block;
         }
 
-        /* TIMELINE FRAMEWORK */
-        .timeline-track {
-            position: relative;
-            padding-left: 30px;
-            text-align: left;
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .timeline-track::before {
-            content: '';
-            position: absolute;
-            left: 8px;
-            top: 5px;
-            bottom: 5px;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--accent-primary), var(--accent-gold));
+        /* --- THE VOWS --- */
+        .vows-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
 
-        .timeline-node {
-            position: relative;
-            margin-bottom: 25px;
+        .vow-card {
+            background: rgba(255,255,255,0.05);
+            padding: 20px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
         }
 
-        .timeline-node::before {
-            content: '❤️';
-            position: absolute;
-            left: -31px;
-            top: 2px;
-            font-size: 12px;
-            background: #ffe3ee;
-            border-radius: 50%;
-            padding: 2px;
+        .vow-card i {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 10px;
         }
 
-        .node-date {
-            font-size: 12px;
+        .vow-card h3 {
+            color: var(--accent-pink);
+            font-size: 13px;
+            margin-bottom: 5px;
             font-weight: 800;
-            color: var(--accent-primary);
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .node-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--dark-velvet);
-            margin: 2px 0 4px 0;
-        }
-
-        .node-desc {
-            font-size: 14px;
-            color: var(--text-sub);
+        .vow-card p {
+            color: #ccc;
+            font-size: 11px;
             line-height: 1.5;
         }
 
-        /* SCROLLABLE GALLERY GRID */
-        .gallery-grid {
+        /* --- GALLERY GRID --- */
+        .gallery-wrap {
             display: grid;
             grid-template-columns: 100%;
             gap: 15px;
@@ -203,453 +184,344 @@
             padding-right: 5px;
         }
 
-        .gallery-grid::-webkit-scrollbar {
-            width: 4px;
-        }
-        .gallery-grid::-webkit-scrollbar-thumb {
-            background: rgba(255, 56, 116, 0.2);
-            border-radius: 10px;
-        }
+        .gallery-wrap::-webkit-scrollbar { width: 3px; }
+        .gallery-wrap::-webkit-scrollbar-thumb { background: var(--accent-pink); border-radius: 10px; }
 
-        .frame-wrapper {
+        .img-frame {
             background: white;
-            padding: 8px;
-            border-radius: 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
-            border: 1px solid rgba(255,255,255,0.8);
+            padding: 6px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .frame-wrapper img {
+        .img-frame img {
             width: 100%;
-            border-radius: 18px;
-            object-fit: cover;
+            border-radius: 15px;
             display: block;
-            background: #fafafa;
         }
 
-        /* AUDIO INTERFACE */
-        .audio-deck {
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 24px;
-            padding: 25px;
-            text-align: center;
-            margin-top: 10px;
+        /* --- TIMELINE --- */
+        .story-timeline {
+            border-left: 2px solid var(--accent-pink);
+            padding-left: 20px;
+            text-align: left;
         }
 
-        .disc-art {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-            margin: 0 auto 15px auto;
-            animation: rotateDisc 12s linear infinite;
-        }
-
-        .track-title {
-            font-weight: 700;
-            font-size: 17px;
-            color: var(--dark-velvet);
-        }
-
-        .track-artist {
-            font-size: 13px;
-            color: var(--text-sub);
-            margin-top: 2px;
-        }
-
-        .playback-progress {
-            height: 4px;
-            background: rgba(0,0,0,0.06);
-            border-radius: 2px;
-            margin: 20px 0 10px 0;
+        .story-event {
             position: relative;
+            margin-bottom: 30px;
         }
 
-        .progress-fill {
+        .story-event::before {
+            content: '🌸';
             position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 0%;
-            background: var(--accent-primary);
-            border-radius: 2px;
+            left: -29px;
+            background: #1a000a;
+            padding: 2px;
         }
 
-        .time-stamps {
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            color: var(--text-sub);
-            font-weight: 600;
+        .event-title {
+            color: var(--luxury-gold);
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
         }
 
-        /* TERMINAL PROPOSAL LAYOUT */
-        .proposal-core {
+        .event-desc {
+            color: #ddd;
+            font-size: 13px;
+            margin-top: 5px;
+            line-height: 1.6;
+        }
+
+        /* --- PROPOSAL CORE --- */
+        .proposal-final {
             text-align: center;
         }
 
-        .proposal-core p {
-            font-size: 15.5px;
-            color: var(--text-main);
-            line-height: 1.7;
+        .proposal-final p {
+            color: #eee;
+            font-size: 15px;
+            line-height: 1.8;
             margin-bottom: 30px;
         }
 
         .proposal-headline {
-            color: var(--accent-primary);
+            color: var(--accent-pink);
             font-weight: 800;
-            font-size: 19px;
-            margin-bottom: 35px;
+            font-size: 20px;
+            margin-bottom: 40px;
             display: block;
         }
 
-        /* BUTTON CONSOLE RUNTIMES */
-        .interactive-dock {
+        .btn-dock {
             display: flex;
             justify-content: center;
-            align-items: center;
             gap: 15px;
-            position: relative;
             height: 60px;
+            position: relative;
         }
 
         .btn {
-            padding: 14px 40px;
-            font-size: 16px;
-            font-weight: 700;
+            padding: 15px 40px;
             border-radius: 20px;
             border: none;
+            font-weight: 800;
             cursor: pointer;
-            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s;
         }
 
         #yes-btn {
-            background: linear-gradient(135deg, var(--accent-primary) 0%, #ff5287 100%);
+            background: var(--accent-pink);
             color: white;
-            box-shadow: 0 10px 25px rgba(255, 56, 116, 0.35);
-            z-index: 5;
+            box-shadow: 0 10px 20px rgba(255, 45, 117, 0.4);
         }
 
         #yes-btn:hover {
-            transform: scale(1.04);
+            transform: scale(1.05);
         }
 
         #no-btn {
-            background-color: #ede7ea;
-            color: #6e6065;
+            background: #222;
+            color: #666;
             position: absolute;
             left: 55%;
-            font-weight: 600;
         }
 
-        /* SUCCESS COMPONENT LAYOUT */
-        #celebration-screen {
+        /* SUCCESS SCREEN */
+        #success-view {
             display: none;
             text-align: center;
-            animation: paneFadeIn 0.6s ease forwards;
         }
 
-        .signature-block {
-            font-size: 12px;
-            color: var(--accent-gold);
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 25px;
+        .big-heart {
+            font-size: 80px;
+            animation: heartBeat 1.2s infinite;
         }
 
-        /* --- CORE SYSTEM ANIMATIONS --- */
-        @keyframes paneFadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes rotateDisc {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes pulse {
+        @keyframes heartBeat {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
             100% { transform: scale(1); }
+        }
+
+        .sig {
+            margin-top: 30px;
+            color: var(--luxury-gold);
+            font-size: 12px;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <canvas id="petalCanvas"></canvas>
+    <canvas id="mainCanvas"></canvas>
 
     <div class="app-shell">
-        
-        <header class="app-header">
+        <header class="header-section">
             <h1 id="shell-title">For Urboshi</h1>
-            <p id="shell-subtitle">Exclusive Space</p>
+            <div class="live-counter" id="love-counter">Initializing Heartbeats...</div>
         </header>
 
-        <nav class="nav-bar" id="app-nav">
-            <button class="tab-trigger active-tab" onclick="switchView(0, 'Our Story')">Story</button>
-            <button class="tab-trigger" onclick="switchView(1, 'Memory Frame')">Gallery</button>
-            <button class="tab-trigger" onclick="switchView(2, 'Our Track')">Music</button>
-            <button class="tab-trigger" onclick="switchView(3, 'The Question')" style="color: var(--accent-primary);">Proposal</button>
+        <nav class="nav-dock">
+            <button class="nav-btn active" onclick="showPane(0)">Story</button>
+            <button class="nav-btn" onclick="showPane(1)">Vows</button>
+            <button class="nav-btn" onclick="showPane(2)">Gallery</button>
+            <button class="nav-btn" onclick="showPane(3)" style="color:var(--accent-pink)">Proposal</button>
         </nav>
 
-        <main class="view-viewport">
+        <main class="viewport">
             
-            <div class="view-pane active-pane" id="pane-story">
-                <div class="timeline-track">
-                    <div class="timeline-node">
-                        <div class="node-date">The Inception</div>
-                        <div class="node-title">When Spaces Crossed</div>
-                        <div class="node-desc">Out of billions of paths, ours crossed. Every micro-interaction since that day made me realize you were the piece I was missing.</div>
+            <div class="pane active" id="pane-0">
+                <div class="story-timeline">
+                    <div class="story-event">
+                        <div class="event-title">The Initial Connection</div>
+                        <div class="event-desc">In a world of random variables, you are the only constant that ever made perfect sense to me.</div>
                     </div>
-                    <div class="timeline-node">
-                        <div class="node-date">The Progression</div>
-                        <div class="node-title">Growing Together</div>
-                        <div class="node-desc">You've turned my ordinary world into an amazing sanctuary. Your laugh is my favorite runtime logic, and your presence anchors me perfectly.</div>
+                    <div class="story-event">
+                        <div class="event-title">Growing in Harmony</div>
+                        <div class="event-desc">Every moment we've spent together has built a foundation stronger than any code I've ever written.</div>
                     </div>
                 </div>
             </div>
 
-            <div class="view-pane" id="pane-gallery">
-                <div class="gallery-grid">
-                    <div class="frame-wrapper">
-                        <img id="main-picture" src="us.jpg" alt="Our Portrait 1" onerror="tryAlternativeImages(this)">
+            <div class="pane" id="pane-1">
+                <div class="vows-grid">
+                    <div class="vow-card">
+                        <i>🛡️</i>
+                        <h3>Protection</h3>
+                        <p>To always be your safe harbor in every storm.</p>
                     </div>
-                    <div class="frame-wrapper">
-                        <img src="us2.jpg" alt="Our Portrait 2" onerror="this.src='us2.png'">
+                    <div class="vow-card">
+                        <i>🌱</i>
+                        <h3>Growth</h3>
+                        <p>To evolve alongside you, every single day.</p>
                     </div>
-                    <div class="frame-wrapper">
-                        <img src="us3.jpg" alt="Our Portrait 3" onerror="this.src='us3.png'">
+                    <div class="vow-card">
+                        <i>⚖️</i>
+                        <h3>Loyalty</h3>
+                        <p>To remain your most faithful partner forever.</p>
+                    </div>
+                    <div class="vow-card">
+                        <i>🥂</i>
+                        <h3>Celebration</h3>
+                        <p>To cheer for your wins more than my own.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="view-pane" id="pane-music">
-                <div class="audio-deck">
-                    <div class="disc-art" id="player-disc" style="background: linear-gradient(45deg, var(--accent-primary), var(--accent-gold)); display: flex; align-items: center; justify-content: center; font-size: 32px; animation-play-state: paused;">🎵</div>
-                    <div class="track-title">Our Perfect Symphony</div>
-                    <div class="track-artist">Dedicated to Urboshi</div>
+            <div class="pane" id="pane-2">
+                <div class="gallery-wrap">
+                    <div class="img-frame"><img src="us.jpg" alt="Memory 1" onerror="imgErr(this)"></div>
+                    <div class="img-frame"><img src="us2.jpg" alt="Memory 2" onerror="this.src='us.jpg'"></div>
+                    <div class="img-frame"><img src="us3.jpg" alt="Memory 3" onerror="this.src='us.jpg'"></div>
+                </div>
+            </div>
+
+            <div class="pane" id="pane-3">
+                <div id="proposal-content">
+                    <p>Urboshi, life is a beautiful journey, but it only feels complete when I'm walking it with you. You are my greatest inspiration and my true north.</p>
+                    <span class="proposal-headline">Will you be mine forever?</span>
                     
-                    <button id="play-btn" onclick="toggleAudioRuntime()" style="margin-top: 15px; padding: 8px 25px; border-radius: 30px; border: none; background: var(--accent-primary); color: white; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(255,56,116,0.2);">▶ PLAY</button>
-
-                    <div class="playback-progress">
-                        <div class="progress-fill" id="track-progress"></div>
-                    </div>
-                    <div class="time-stamps">
-                        <span id="current-time">0:00</span>
-                        <span id="total-duration">--:--</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="view-pane" id="pane-proposal">
-                
-                <div class="proposal-core" id="interactive-prompt">
-                    <p>
-                        Urboshi, you have been my constant inspiration, my best friend, and my safest home. I don't want to code a future where you aren't right next to me sharing every dream.
-                    </p>
-                    <span class="proposal-headline">Will you write this life story with me and be mine forever?</span>
-                    
-                    <div class="interactive-dock">
-                        <button class="btn" id="yes-btn" onclick="executeSuccessRoutine()">✨ YES! ✨</button>
-                        <button class="btn" id="no-btn" onmouseover="dodgeInteraction()" onclick="dodgeInteraction()">No</button>
+                    <div class="btn-dock">
+                        <button class="btn" id="yes-btn" onclick="celebrate()">YES!</button>
+                        <button class="btn" id="no-btn" onmouseover="dodge()" onclick="dodge()">No</button>
                     </div>
                 </div>
 
-                <div id="celebration-screen">
-                    <div style="font-size: 80px; animation: pulse 1s infinite;">💖</div>
-                    <h2 style="color: var(--accent-primary); font-size: 30px; margin-top: 15px; font-weight: 800;">Always & Forever!</h2>
-                    <p style="font-size: 15.5px; color: var(--text-main); line-height: 1.7; margin-top: 10px;">
-                        You just made me the happiest guy alive. I love you cleanly, completely, and endlessly. Let's build our wonderful future together! 🥰💍
-                    </p>
-                    <div class="signature-block">— Made with 💖 by Abir</div>
+                <div id="success-view">
+                    <div class="big-heart">💖</div>
+                    <h2 style="color:white; margin-top:20px;">Always & Forever!</h2>
+                    <p style="color:#ccc; font-size:14px; margin-top:10px;">You've made me the happiest guy alive. I love you, Urboshi.</p>
+                    <div class="sig">— From Abir with Love</div>
                 </div>
-
             </div>
 
         </main>
     </div>
 
     <script>
-        // Tab-View Content Routing Array Mapping
-        const panes = [
-            document.getElementById('pane-story'),
-            document.getElementById('pane-gallery'),
-            document.getElementById('pane-music'),
-            document.getElementById('pane-proposal')
-        ];
-        const triggers = document.querySelectorAll('.tab-trigger');
-        const shellTitle = document.getElementById('shell-title');
-        const shellSubtitle = document.getElementById('shell-subtitle');
+        // NAVIGATION ENGINE
+        const panes = document.querySelectorAll('.pane');
+        const btns = document.querySelectorAll('.nav-btn');
 
-        function switchView(targetIndex, contextSub) {
-            panes.forEach((pane, idx) => {
-                if(idx === targetIndex) {
-                    pane.classList.add('active-tab', 'active-pane');
-                } else {
-                    pane.classList.remove('active-tab', 'active-pane');
-                }
-                triggers[idx].classList.toggle('active-tab', idx === targetIndex);
+        function showPane(idx) {
+            panes.forEach((p, i) => {
+                p.classList.toggle('active', i === idx);
+                btns[i].classList.toggle('active', i === idx);
             });
-            shellSubtitle.innerText = contextSub;
         }
 
-        // Auto-Recovery Engine for Target Extension Strings
-        const extensionMatrix = ["us.jpg", "us.JPG", "us.png", "us.PNG", "us.jpeg", "us.JPEG"];
-        let matrixPointer = 0;
-
-        function tryAlternativeImages(img) {
-            if (matrixPointer < extensionMatrix.length - 1) {
-                matrixPointer++;
-                img.src = extensionMatrix[matrixPointer];
-            }
-        }
-
-        // --- UPGRADED AUDIO ENGINE RUNTIME FUNCTIONALITY ---
-        const realAudio = new Audio();
-        realAudio.src = 'song.mp3';
-        realAudio.loop = true;
-        realAudio.preload = 'auto';
-
-        const playBtn = document.getElementById('play-btn');
-        const discArt = document.getElementById('player-disc');
-        const progressBar = document.getElementById('track-progress');
-        const currentTimeLabel = document.getElementById('current-time');
-        const totalDurationLabel = document.getElementById('total-duration');
-
-        function toggleAudioRuntime() {
-            if (realAudio.paused) {
-                realAudio.play().then(() => {
-                    playBtn.innerText = "⏸ PAUSE";
-                    discArt.style.animationPlayState = "running";
-                }).catch(err => {
-                    console.error("Audio block caught:", err);
-                    alert("Audio loading stream initialization pending cell track. Try hitting play once more!");
-                });
-            } else {
-                realAudio.pause();
-                playBtn.innerText = "▶ PLAY";
-                discArt.style.animationPlayState = "paused";
-            }
-        }
-
-        realAudio.addEventListener('timeupdate', () => {
-            const current = realAudio.currentTime;
-            const duration = realAudio.duration;
-            if (duration) {
-                const percentage = (current / duration) * 100;
-                progressBar.style.width = percentage + '%';
-                
-                let mins = Math.floor(current / 60);
-                let secs = Math.floor(current % 60);
-                if (secs < 10) secs = '0' + secs;
-                currentTimeLabel.innerText = `${mins}:${secs}`;
-                
-                let durMins = Math.floor(duration / 60);
-                let durSecs = Math.floor(duration % 60);
-                if (durSecs < 10) durSecs = '0' + durSecs;
-                totalDurationLabel.innerText = `${durMins}:${durSecs}`;
-            }
-        });
-
-        realAudio.addEventListener('error', (e) => {
-            console.error("Streaming error caught - handling fallback route mapping:", e);
-            if(!realAudio.src.includes(window.location.hostname)) {
-                realAudio.src = window.location.href.split('index.html')[0] + 'song.mp3';
-            }
-        });
-
-        // Absolute Boundary Calculation Kinetic Dodge Script
-        function dodgeInteraction() {
-            const noBtn = document.getElementById('no-btn');
-            const viewport = document.querySelector('.view-viewport');
+        // --- HIGH-PRECISION DELTA LOVE CLOCK ENGINE ---
+        // Anchored strictly to April 30 at 4:57 PM
+        const startDate = new Date('April 30, 2026 16:57:00'); 
+        
+        function updateCounter() {
+            const now = new Date();
+            const diff = now - startDate;
             
-            const safetyOffset = 20;
-            const lateralScope = viewport.clientWidth - noBtn.clientWidth - (safetyOffset * 2);
-            const verticalScope = viewport.clientHeight - noBtn.clientHeight - (safetyOffset * 2);
+            // Time breakdown calculations
+            const totalSeconds = Math.floor(diff / 1000);
+            const days = Math.floor(totalSeconds / (3600 * 24));
+            const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
             
-            const targetX = Math.floor(Math.random() * lateralScope) + safetyOffset;
-            const targetY = Math.floor(Math.random() * verticalScope) + safetyOffset;
-            
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = targetX + 'px';
-            noBtn.style.top = targetY + 'px';
+            // Compiling live data strings
+            document.getElementById('love-counter').innerText = 
+                `${days}d ${hours}h ${minutes}m ${seconds}s Together`;
+        }
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // KINETIC TOUCH/MOUSE ESCAPE DODGE ENGINE
+        function dodge() {
+            const btn = document.getElementById('no-btn');
+            const view = document.querySelector('.viewport');
+            const x = Math.random() * (view.clientWidth - btn.clientWidth - 40) + 20;
+            const y = Math.random() * (view.clientHeight - btn.clientHeight - 40) + 20;
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
         }
 
-        // Terminal Unmount/Mount State Controller
-        function executeSuccessRoutine() {
-            document.getElementById('app-nav').style.display = 'none';
-            document.getElementById('interactive-prompt').style.display = 'none';
-            document.getElementById('celebration-screen').style.display = 'block';
-            shellTitle.innerText = "Confirmed Agreement";
-            shellSubtitle.innerText = "Together Forever";
-            
-            realAudio.play().catch(e => console.log("Autoplay waiting on document trigger event loop context"));
+        function celebrate() {
+            document.getElementById('proposal-content').style.display = 'none';
+            document.querySelector('.nav-dock').style.display = 'none';
+            document.getElementById('success-view').style.display = 'block';
+            document.getElementById('shell-title').innerText = "Abir & Urboshi";
         }
 
-        // --- BACKGROUND AMBIENT PROCEDURAL PARTICLE SYSTEM ---
-        const canvas = document.getElementById('petalCanvas');
+        function imgErr(i) { i.src = "https://via.placeholder.com/400x300?text=Our+Moments"; }
+
+        // --- MIDNIGHT ROSE PARTICLE ENGINE (DUAL-LAYER CANVAS) ---
+        const canvas = document.getElementById('mainCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
 
-        function adjustSurface() {
+        function resize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
-        window.addEventListener('resize', adjustSurface);
-        adjustSurface();
+        window.addEventListener('resize', resize);
+        resize();
 
-        class FlowParticle {
-            constructor() {
+        class Particle {
+            constructor(type) {
+                this.type = type; // 'petal' or 'shimmer'
+                this.reset();
+            }
+            reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height - canvas.height;
-                this.dimension = Math.random() * 11 + 6;
-                this.vY = Math.random() * 1.4 + 0.8;
-                this.vX = Math.random() * 0.8 - 0.4;
-                this.alpha = Math.random() * 0.4 + 0.2;
-                this.deg = Math.random() * 360;
-                this.spin = Math.random() * 1 - 0.5;
+                this.size = this.type === 'petal' ? Math.random() * 10 + 5 : Math.random() * 3 + 1;
+                this.speedY = Math.random() * 1.5 + 0.5;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                this.rot = Math.random() * 360;
+                this.spin = Math.random() * 2 - 1;
             }
-            step() {
-                this.y += this.vY;
-                this.x += this.vX;
-                this.deg += this.spin;
-                if (this.y > canvas.height) {
-                    this.y = -20;
-                    this.x = Math.random() * canvas.width;
-                }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rot += this.spin;
+                if (this.y > canvas.height) this.reset();
             }
-            render() {
+            draw() {
                 ctx.save();
                 ctx.translate(this.x, this.y);
-                ctx.rotate(this.deg * Math.PI / 180);
-                ctx.fillStyle = `rgba(255, 56, 116, ${this.alpha})`;
-                ctx.beginPath();
-                ctx.ellipse(0, 0, this.dimension, this.dimension / 1.6, 0, 0, 2 * Math.PI);
-                ctx.fill();
+                ctx.globalAlpha = this.opacity;
+                if (this.type === 'petal') {
+                    ctx.rotate(this.rot * Math.PI / 180);
+                    ctx.fillStyle = '#ff2d75';
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, this.size, this.size/1.5, 0, 0, 2 * Math.PI);
+                    ctx.fill();
+                } else {
+                    ctx.fillStyle = '#f3e5ab';
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
                 ctx.restore();
             }
         }
 
-        function buildPool() {
-            particles = [];
-            const density = window.innerWidth < 600 ? 30 : 60;
-            for (let i = 0; i < density; i++) particles.push(new FlowParticle());
+        function init() {
+            for (let i = 0; i < 40; i++) particles.push(new Particle('petal'));
+            for (let i = 0; i < 60; i++) particles.push(new Particle('shimmer'));
         }
 
-        function runLoop() {
+        function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].step();
-                particles[i].render();
-            }
-            requestAnimationFrame(runLoop);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
         }
-        buildPool();
-        runLoop();
+        init();
+        animate();
     </script>
 </body>
 </html>
