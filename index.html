@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Urboshi ❤️</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fff5f8 0%, #ffdceb 100%);
+            --primary-pink: #ff477e;
+            --hover-pink: #ff1f5f;
+            --dark-magenta: #600030;
+            --glass-white: rgba(255, 255, 255, 0.95);
+            --text-main: #2d2d2d;
+            --text-sub: #555555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background: var(--bg-gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .app-container {
+            background: var(--glass-white);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 45px 35px;
+            border-radius: 32px;
+            box-shadow: 0 20px 50px rgba(255, 71, 126, 0.12);
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            position: relative;
+        }
+
+        #intro-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .heading-sub {
+            color: var(--text-sub);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .heart-trigger {
+            background: none;
+            border: none;
+            font-size: 95px;
+            cursor: pointer;
+            animation: pulse 1.4s infinite;
+            transition: transform 0.3s;
+        }
+
+        .heart-trigger:hover {
+            transform: scale(1.1);
+        }
+
+        #proposal-screen {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        /* Modern Circular Card Avatar */
+        .image-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px auto;
+            position: relative;
+        }
+
+        .modern-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 12px 28px rgba(255, 71, 126, 0.22);
+            background-color: #f3f3f3;
+            display: block;
+        }
+
+        h1 {
+            color: var(--dark-magenta);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .letter-text {
+            color: var(--text-main);
+            font-size: 15.5px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            padding: 0 5px;
+        }
+
+        /* --- REDESIGNED INTERACTIVE ZONE --- */
+        .action-zone {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            height: 60px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            padding: 14px 40px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #yes-btn {
+            background-color: var(--primary-pink);
+            color: white;
+            box-shadow: 0 8px 24px rgba(255, 71, 126, 0.35);
+            z-index: 2;
+        }
+
+        #yes-btn:hover {
+            background-color: var(--hover-pink);
+            transform: scale(1.05);
+        }
+
+        #no-btn {
+            background-color: #eee9ec;
+            color: #665c62;
+            position: absolute;
+            /* Places it naturally to the right side initially */
+            left: 55%; 
+        }
+
+        #celebration-screen {
+            display: none;
+            animation: scaleUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .success-title {
+            font-size: 32px;
+            color: var(--dark-magenta);
+            font-weight: 800;
+            margin: 25px 0 15px 0;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes scaleUp {
+            from { opacity: 0; transform: scale(0.85); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <div id="intro-screen">
+            <span class="heading-sub">Message Decrypting...</span>
+            <button class="heart-trigger" onclick="unlockProposal()">💝</button>
+            <p style="color: var(--text-sub); font-size: 14px; font-weight: 500;">Tap the heart to open</p>
+        </div>
+
+        <div id="proposal-screen">
+            <div class="image-container">
+                <img id="couple-pic" src="us.jpg" alt="Our Moments" class="modern-avatar" onerror="tryAlternativeFormats(this)">
+            </div>
+            
+            <h1>Hey Urboshi,</h1>
+            <p class="letter-text">
+                From the moment you entered my life, you turned my ordinary world into something extraordinary. You make every day brighter and my heart fuller. I want to build my entire forever with you.
+            </p>
+            <h2 style="color: var(--primary-pink); font-size: 19px; margin-bottom: 25px; font-weight: 700;">Will you make me the happiest person and be mine?</h2>
+            
+            <div class="action-zone">
+                <button class="btn" id="yes-btn" onclick="triggerCelebration()">✨ YES! ✨</button>
+                <button class="btn" id="no-btn" onmouseover="dodgeUser()" onclick="dodgeUser()">No</button>
+            </div>
+        </div>
+
+        <div id="celebration-screen">
+            <div style="font-size: 80px; animation: pulse 1s infinite;">💖</div>
+            <h1 class="success-title">Always & Forever!</h1>
+            <p class="letter-text" style="margin-bottom: 0;">
+                You just made me the happiest guy alive, Urboshi. I love you, and I can't wait for our beautiful journey together! 🥰💍
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // Automatic Picture Extension Fallback Array
+        const formats = ["us.jpg", "us.JPG", "us.png", "us.PNG", "us.jpeg", "us.JPEG"];
+        let formatIndex = 0;
+
+        function tryAlternativeFormats(imgElement) {
+            if (formatIndex < formats.length - 1) {
+                formatIndex++;
+                imgElement.src = formats[formatIndex];
+            }
+        }
+
+        function unlockProposal() {
+            const intro = document.getElementById('intro-screen');
+            const proposal = document.getElementById('proposal-screen');
+            
+            intro.style.opacity = '0';
+            setTimeout(() => {
+                intro.style.display = 'none';
+                proposal.style.display = 'block';
+                setTimeout(() => {
+                    proposal.style.opacity = '1';
+                }, 50);
+            }, 400);
+        }
+
+        // Precision Position Dodge Handler
+        function dodgeUser() {
+            const noBtn = document.getElementById('no-btn');
+            const container = document.querySelector('.app-container');
+            
+            // Calculate absolute outer boundary limits inside the card
+            const paddingValue = 35;
+            const maxWidth = container.clientWidth - noBtn.clientWidth - (paddingValue * 2);
+            const maxHeight = container.clientHeight - noBtn.clientHeight - (paddingValue * 2);
+            
+            // Generate clean target positions relative to top-left boundary mapping
+            const randomX = Math.floor(Math.random() * maxWidth) + paddingValue;
+            const randomY = Math.floor(Math.random() * maxHeight) + paddingValue;
+            
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        function triggerCelebration() {
+            document.getElementById('proposal-screen').style.display = 'none';
+            document.getElementById('celebration-screen').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
