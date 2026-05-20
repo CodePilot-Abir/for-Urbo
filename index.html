@@ -224,7 +224,7 @@
             border-radius: 24px;
             padding: 25px;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .disc-art {
@@ -262,7 +262,7 @@
             left: 0;
             top: 0;
             height: 100%;
-            width: 68%;
+            width: 0%;
             background: var(--accent-primary);
             border-radius: 2px;
         }
@@ -413,15 +413,20 @@
 
             <div class="view-pane" id="pane-music">
                 <div class="audio-deck">
-                    <div class="disc-art" style="background: linear-gradient(45deg, var(--accent-primary), var(--accent-gold)); display: flex; align-items: center; justify-content: center; font-size: 32px;">🎵</div>
-                    <div class="track-title">Perfect Symphony</div>
+                    <audio id="romantic-track" src="song.mp3" preload="auto" loop></audio>
+
+                    <div class="disc-art" id="player-disc" style="background: linear-gradient(45deg, var(--accent-primary), var(--accent-gold)); display: flex; align-items: center; justify-content: center; font-size: 32px; animation-play-state: paused;">🎵</div>
+                    <div class="track-title">Our Perfect Symphony</div>
                     <div class="track-artist">Dedicated to Urboshi</div>
+                    
+                    <button id="play-btn" onclick="toggleAudioRuntime()" style="margin-top: 15px; padding: 8px 25px; border-radius: 30px; border: none; background: var(--accent-primary); color: white; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(255,56,116,0.2);">▶ PLAY</button>
+
                     <div class="playback-progress">
-                        <div class="progress-fill"></div>
+                        <div class="progress-fill" id="track-progress"></div>
                     </div>
                     <div class="time-stamps">
-                        <span>1:43</span>
-                        <span>3:00</span>
+                        <span id="current-time">0:00</span>
+                        <span id="total-duration">--:--</span>
                     </div>
                 </div>
             </div>
@@ -489,12 +494,51 @@
             }
         }
 
+        // --- AUDIO ENGINE RUNTIME FUNCTIONALITY ---
+        const realAudio = document.getElementById('romantic-track');
+        const playBtn = document.getElementById('play-btn');
+        const discArt = document.getElementById('player-disc');
+        const progressBar = document.getElementById('track-progress');
+        const currentTimeLabel = document.getElementById('current-time');
+        const totalDurationLabel = document.getElementById('total-duration');
+
+        function toggleAudioRuntime() {
+            if (realAudio.paused) {
+                realAudio.play().then(() => {
+                    playBtn.innerText = "⏸ PAUSE";
+                    discArt.style.animationPlayState = "running";
+                }).catch(err => console.log("Audio process pending click sequence context: ", err));
+            } else {
+                realAudio.pause();
+                playBtn.innerText = "▶ PLAY";
+                discArt.style.animationPlayState = "paused";
+            }
+        }
+
+        realAudio.addEventListener('timeupdate', () => {
+            const current = realAudio.currentTime;
+            const duration = realAudio.duration;
+            if (duration) {
+                const percentage = (current / duration) * 100;
+                progressBar.style.width = percentage + '%';
+                
+                let mins = Math.floor(current / 60);
+                let secs = Math.floor(current % 60);
+                if (secs < 10) secs = '0' + secs;
+                currentTimeLabel.innerText = `${mins}:${secs}`;
+                
+                let durMins = Math.floor(duration / 60);
+                let durSecs = Math.floor(duration % 60);
+                if (durSecs < 10) durSecs = '0' + durSecs;
+                totalDurationLabel.innerText = `${durMins}:${durSecs}`;
+            }
+        });
+
         // Absolute Boundary Calculation Kinetic Dodge Script
         function dodgeInteraction() {
             const noBtn = document.getElementById('no-btn');
             const viewport = document.querySelector('.view-viewport');
             
-            // Derive viewport inner dimensional mapping metrics
             const safetyOffset = 20;
             const lateralScope = viewport.clientWidth - noBtn.clientWidth - (safetyOffset * 2);
             const verticalScope = viewport.clientHeight - noBtn.clientHeight - (safetyOffset * 2);
@@ -514,6 +558,9 @@
             document.getElementById('celebration-screen').style.display = 'block';
             shellTitle.innerText = "Confirmed Agreement";
             shellSubtitle.innerText = "Together Forever";
+            
+            // Background Autoplay execution trigger on click verification
+            realAudio.play().catch(e => console.log("Interactivity needed for direct launch initialization"));
         }
 
         // --- BACKGROUND AMBIENT PROCEDURAL PARTICLE SYSTEM ---
