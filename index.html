@@ -203,7 +203,6 @@
             padding-right: 5px;
         }
 
-        /* Soft scrollbar aesthetics for the gallery viewport */
         .gallery-grid::-webkit-scrollbar {
             width: 4px;
         }
@@ -417,7 +416,7 @@
             <div class="view-pane" id="pane-gallery">
                 <div class="gallery-grid">
                     <div class="frame-wrapper">
-                        <img src="us.jpg" alt="Our Portrait 1" onerror="tryAlternativeImages(this)">
+                        <img id="main-picture" src="us.jpg" alt="Our Portrait 1" onerror="tryAlternativeImages(this)">
                     </div>
                     <div class="frame-wrapper">
                         <img src="us2.jpg" alt="Our Portrait 2" onerror="this.src='us2.png'">
@@ -430,8 +429,6 @@
 
             <div class="view-pane" id="pane-music">
                 <div class="audio-deck">
-                    <audio id="romantic-track" src="song.mp3" preload="auto" loop></audio>
-
                     <div class="disc-art" id="player-disc" style="background: linear-gradient(45deg, var(--accent-primary), var(--accent-gold)); display: flex; align-items: center; justify-content: center; font-size: 32px; animation-play-state: paused;">🎵</div>
                     <div class="track-title">Our Perfect Symphony</div>
                     <div class="track-artist">Dedicated to Urboshi</div>
@@ -511,8 +508,12 @@
             }
         }
 
-        // --- AUDIO ENGINE RUNTIME FUNCTIONALITY ---
-        const realAudio = document.getElementById('romantic-track');
+        // --- UPGRADED AUDIO ENGINE RUNTIME FUNCTIONALITY ---
+        const realAudio = new Audio();
+        realAudio.src = 'song.mp3';
+        realAudio.loop = true;
+        realAudio.preload = 'auto';
+
         const playBtn = document.getElementById('play-btn');
         const discArt = document.getElementById('player-disc');
         const progressBar = document.getElementById('track-progress');
@@ -524,7 +525,10 @@
                 realAudio.play().then(() => {
                     playBtn.innerText = "⏸ PAUSE";
                     discArt.style.animationPlayState = "running";
-                }).catch(err => console.log("Audio process pending click sequence context: ", err));
+                }).catch(err => {
+                    console.error("Audio block caught:", err);
+                    alert("Audio loading stream initialization pending cell track. Try hitting play once more!");
+                });
             } else {
                 realAudio.pause();
                 playBtn.innerText = "▶ PLAY";
@@ -548,6 +552,13 @@
                 let durSecs = Math.floor(duration % 60);
                 if (durSecs < 10) durSecs = '0' + durSecs;
                 totalDurationLabel.innerText = `${durMins}:${durSecs}`;
+            }
+        });
+
+        realAudio.addEventListener('error', (e) => {
+            console.error("Streaming error caught - handling fallback route mapping:", e);
+            if(!realAudio.src.includes(window.location.hostname)) {
+                realAudio.src = window.location.href.split('index.html')[0] + 'song.mp3';
             }
         });
 
@@ -576,8 +587,7 @@
             shellTitle.innerText = "Confirmed Agreement";
             shellSubtitle.innerText = "Together Forever";
             
-            // Background Autoplay execution trigger on click verification
-            realAudio.play().catch(e => console.log("Interactivity needed for direct launch initialization"));
+            realAudio.play().catch(e => console.log("Autoplay waiting on document trigger event loop context"));
         }
 
         // --- BACKGROUND AMBIENT PROCEDURAL PARTICLE SYSTEM ---
