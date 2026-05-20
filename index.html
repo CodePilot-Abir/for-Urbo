@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For Urboshi, From Abir ❤️</title>
+    <title>For Urboshi | From Abir ❤️</title>
     <style>
-        /* --- PRO ULTRA-PREMIUM ROSACE PALETTE --- */
+        /* --- ARCHITECTURAL CSS DESIGN TOKENS --- */
         :root {
-            --bg-gradient: linear-gradient(135deg, #fff2f6 0%, #ffd3e3 100%);
-            --royal-rose: #ff3370;
-            --velvet-hover: #e61f58;
-            --luxury-gold: #d4af37;
-            --deep-burgundy: #4a0022;
-            --premium-glass: rgba(255, 255, 255, 0.88);
-            --text-primary: #1c1c1c;
-            --text-secondary: #4d4d4d;
+            --bg-canvas: linear-gradient(135deg, #fff0f5 0%, #ffe3ee 100%);
+            --accent-primary: #ff3874;
+            --accent-secondary: #e61954;
+            --accent-gold: #d4af37;
+            --dark-velvet: #42001d;
+            --glass-panel: rgba(255, 255, 255, 0.82);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --shadow-premium: 0 30px 60px rgba(255, 56, 116, 0.15);
+            --text-main: #1f1218;
+            --text-sub: #615057;
         }
 
         * {
@@ -26,16 +28,17 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: var(--bg-gradient);
+            background: var(--bg-canvas);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
+            padding: 20px;
         }
 
-        /* Ambient Particle Engine Layer */
+        /* Hardware Accelerated Particle Canvas */
         canvas {
             position: absolute;
             top: 0;
@@ -44,152 +47,318 @@
             height: 100%;
             pointer-events: none;
             z-index: 1;
+            will-change: transform;
         }
 
-        /* --- CONTAINER INTERACTIVE APPARATUS --- */
-        .premium-card {
-            background: var(--premium-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 50px 35px;
-            border-radius: 40px;
-            box-shadow: 0 30px 70px rgba(255, 51, 112, 0.12), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.6);
-            max-width: 430px;
-            width: 92%;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            position: relative;
+        /* --- APPLICATION PLATFORM LAYOUT --- */
+        .app-shell {
+            background: var(--glass-panel);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 36px;
+            box-shadow: var(--shadow-premium), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+            max-width: 500px;
+            width: 100%;
             z-index: 10;
-            transform: scale(1);
-            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        /* --- GATEWAY SCREEN --- */
-        #intro-screen {
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 25px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .decrypt-tag {
-            color: var(--royal-rose);
-            font-size: 13px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 700;
+        /* App Header Layout */
+        .app-header {
+            padding: 30px 25px 15px 25px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 56, 116, 0.1);
         }
 
-        .master-heart {
-            background: none;
-            border: none;
-            font-size: 100px;
-            cursor: pointer;
-            animation: pulse 1.2s infinite ease-in-out;
-            transition: transform 0.3s;
-        }
-
-        .master-heart:hover {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        /* --- PROPOSAL FRAMEWORK --- */
-        #proposal-screen {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
-        }
-
-        .avatar-frame {
-            width: 190px;
-            height: 190px;
-            margin: 0 auto 30px auto;
-            position: relative;
-            border-radius: 50%;
-            padding: 6px;
-            background: linear-gradient(135deg, var(--royal-rose), var(--luxury-gold));
-            box-shadow: 0 15px 35px rgba(255, 51, 112, 0.25);
-        }
-
-        .avatar-frame img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            background: #fafafa;
-        }
-
-        h1 {
-            color: var(--deep-burgundy);
-            font-size: 30px;
+        .app-header h1 {
+            color: var(--dark-velvet);
+            font-size: 24px;
             font-weight: 800;
-            margin-bottom: 20px;
             letter-spacing: -0.5px;
         }
 
-        .prose-box {
-            color: var(--text-primary);
-            font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 35px;
-            font-weight: 400;
+        .app-header p {
+            color: var(--accent-primary);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 4px;
         }
 
-        .gold-accent {
-            color: var(--royal-rose);
-            font-weight: 800;
-            font-size: 20px;
-            margin-bottom: 30px;
+        /* Modular Tab Switch Engine */
+        .nav-bar {
+            display: flex;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 6px;
+            margin: 15px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            gap: 4px;
+        }
+
+        .tab-trigger {
+            flex: 1;
+            padding: 10px 5px;
+            background: none;
+            border: none;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-sub);
+            cursor: pointer;
+            border-radius: 14px;
+            transition: all 0.25s ease;
+            text-align: center;
+        }
+
+        .tab-trigger.active-tab {
+            background: var(--accent-primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 56, 116, 0.25);
+        }
+
+        /* --- CONTENT MAIN INTERFACES --- */
+        .view-viewport {
+            padding: 15px 25px 35px 25px;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .view-pane {
+            display: none;
+            opacity: 0;
+            animation: paneFadeIn 0.4s ease forwards;
+        }
+
+        .view-pane.active-pane {
             display: block;
         }
 
-        /* --- ENGINE ZONE INTERACTION --- */
+        /* TIMELINE FRAMEWORK */
+        .timeline-track {
+            position: relative;
+            padding-left: 30px;
+            text-align: left;
+        }
+
+        .timeline-track::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-primary), var(--accent-gold));
+        }
+
+        .timeline-node {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .timeline-node::before {
+            content: '❤️';
+            position: absolute;
+            left: -31px;
+            top: 2px;
+            font-size: 12px;
+            background: #ffe3ee;
+            border-radius: 50%;
+            padding: 2px;
+        }
+
+        .node-date {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .node-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark-velvet);
+            margin: 2px 0 4px 0;
+        }
+
+        .node-desc {
+            font-size: 14px;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+
+        /* GALLERY FRAMEWORK */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 100%;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .frame-wrapper {
+            background: white;
+            padding: 8px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .frame-wrapper img {
+            width: 100%;
+            border-radius: 18px;
+            object-fit: cover;
+            display: block;
+            background: #fafafa;
+        }
+
+        /* AUDIO INTERFACE */
+        .audio-deck {
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .disc-art {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            margin: 0 auto 15px auto;
+            animation: rotateDisc 12s linear infinite;
+        }
+
+        .track-title {
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--dark-velvet);
+        }
+
+        .track-artist {
+            font-size: 13px;
+            color: var(--text-sub);
+            margin-top: 2px;
+        }
+
+        .playback-progress {
+            height: 4px;
+            background: rgba(0,0,0,0.06);
+            border-radius: 2px;
+            margin: 20px 0 10px 0;
+            position: relative;
+        }
+
+        .progress-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 68%;
+            background: var(--accent-primary);
+            border-radius: 2px;
+        }
+
+        .time-stamps {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-sub);
+            font-weight: 600;
+        }
+
+        /* TERMINAL PROPOSAL LAYOUT */
+        .proposal-core {
+            text-align: center;
+        }
+
+        .proposal-core p {
+            font-size: 15.5px;
+            color: var(--text-main);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .proposal-headline {
+            color: var(--accent-primary);
+            font-weight: 800;
+            font-size: 19px;
+            margin-bottom: 35px;
+            display: block;
+        }
+
+        /* BUTTON CONSOLE RUNTIMES */
         .interactive-dock {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             position: relative;
             height: 60px;
-            margin-top: 15px;
         }
 
         .btn {
-            padding: 14px 42px;
+            padding: 14px 40px;
             font-size: 16px;
             font-weight: 700;
-            border-radius: 22px;
+            border-radius: 20px;
             border: none;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         #yes-btn {
-            background: linear-gradient(135deg, var(--royal-rose) 0%, #ff5287 100%);
+            background: linear-gradient(135deg, var(--accent-primary) 0%, #ff5287 100%);
             color: white;
-            box-shadow: 0 10px 25px rgba(255, 51, 112, 0.4);
+            box-shadow: 0 10px 25px rgba(255, 56, 116, 0.35);
             z-index: 5;
         }
 
         #yes-btn:hover {
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 12px 30px rgba(255, 51, 112, 0.5);
+            transform: scale(1.04);
         }
 
         #no-btn {
-            background-color: #f2edf0;
-            color: #73686e;
+            background-color: #ede7ea;
+            color: #6e6065;
             position: absolute;
-            left: 56%;
+            left: 55%;
             font-weight: 600;
         }
 
-        /* --- CELEBRATION ARCHITECTURE --- */
+        /* SUCCESS COMPONENT LAYOUT */
         #celebration-screen {
             display: none;
-            animation: emerge 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            text-align: center;
+            animation: paneFadeIn 0.6s ease forwards;
+        }
+
+        .signature-block {
+            font-size: 12px;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 25px;
+        }
+
+        /* --- CORE SYSTEM ANIMATIONS --- */
+        @keyframes paneFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotateDisc {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         @keyframes pulse {
@@ -197,166 +366,216 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
-
-        @keyframes emerge {
-            from { opacity: 0; transform: scale(0.88) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
     </style>
 </head>
 <body>
 
     <canvas id="petalCanvas"></canvas>
 
-    <div class="premium-card">
+    <div class="app-shell">
         
-        <div id="intro-screen">
-            <span class="decrypt-tag">Safe Connection Established</span>
-            <button class="master-heart" onclick="activateProposal()">💝</button>
-            <p style="color: var(--text-secondary); font-size: 14px; font-weight: 600;">Click to open your message</p>
-        </div>
+        <header class="app-header">
+            <h1 id="shell-title">For Urboshi</h1>
+            <p id="shell-subtitle">Exclusive Space</p>
+        </header>
 
-        <div id="proposal-screen">
-            <div class="avatar-frame">
-                <img id="couple-img" src="us.jpg" alt="Our Shared World" onerror="handleImageFallbacks(this)">
-            </div>
+        <nav class="nav-bar" id="app-nav">
+            <button class="tab-trigger active-tab" onclick="switchView(0, 'Our Story')">Story</button>
+            <button class="tab-trigger" onclick="switchView(1, 'Memory Frame')">Gallery</button>
+            <button class="tab-trigger" onclick="switchView(2, 'Our Track')">Music</button>
+            <button class="tab-trigger" onclick="switchView(3, 'The Question')" style="color: var(--accent-primary);">Proposal</button>
+        </nav>
+
+        <main class="view-viewport">
             
-            <h1>Hey Urboshi,</h1>
-            <p class="prose-box">
-                From the moment you entered my life, you turned my ordinary world into something completely extraordinary. You make every single day brighter, and my heart infinitely fuller. I want to build my entire forever standing right by your side.
-            </p>
-            <span class="gold-accent">Will you make me the happiest person and be mine?</span>
-            
-            <div class="interactive-dock">
-                <button class="btn" id="yes-btn" onclick="engageCelebration()">✨ YES! ✨</button>
-                <button class="btn" id="no-btn" onmouseover="teleportNoButton()" onclick="teleportNoButton()">No</button>
+            <div class="view-pane active-pane" id="pane-story">
+                <div class="timeline-track">
+                    <div class="timeline-node">
+                        <div class="node-date">The Inception</div>
+                        <div class="node-title">When Spaces Crossed</div>
+                        <div class="node-desc">Out of billions of paths, ours crossed. Every micro-interaction since that day made me realize you were the piece I was missing.</div>
+                    </div>
+                    <div class="timeline-node">
+                        <div class="node-date">The Progression</div>
+                        <div class="node-title">Growing Together</div>
+                        <div class="node-desc">You've turned my ordinary world into an amazing sanctuary. Your laugh is my favorite runtime logic, and your presence anchors me perfectly.</div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div id="celebration-screen">
-            <div style="font-size: 85px; animation: pulse 1s infinite;">💖</div>
-            <h1 style="color: var(--royal-rose); font-size: 34px; margin-top: 15px;">Always & Forever!</h1>
-            <p class="prose-box" style="margin-bottom: 5px; font-size: 17px; font-weight: 500;">
-                You just made me the happiest guy alive, Urboshi. I love you with all my heart, and I can't wait for our beautiful journey ahead.
-            </p>
-            <span style="font-size: 13px; color: var(--luxury-gold); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 20px;">— Yours truly, Abir</span>
-        </div>
+            <div class="view-pane" id="pane-gallery">
+                <div class="gallery-grid">
+                    <div class="frame-wrapper">
+                        <img id="main-picture" src="us.jpg" alt="Our Portrait" onerror="tryAlternativeImages(this)">
+                    </div>
+                </div>
+            </div>
 
+            <div class="view-pane" id="pane-music">
+                <div class="audio-deck">
+                    <div class="disc-art" style="background: linear-gradient(45deg, var(--accent-primary), var(--accent-gold)); display: flex; align-items: center; justify-content: center; font-size: 32px;">🎵</div>
+                    <div class="track-title">Perfect Symphony</div>
+                    <div class="track-artist">Dedicated to Urboshi</div>
+                    <div class="playback-progress">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="time-stamps">
+                        <span>1:43</span>
+                        <span>3:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-pane" id="pane-proposal">
+                
+                <div class="proposal-core" id="interactive-prompt">
+                    <p>
+                        Urboshi, you have been my constant inspiration, my best friend, and my safest home. I don't want to code a future where you aren't right next to me sharing every dream.
+                    </p>
+                    <span class="proposal-headline">Will you write this life story with me and be mine forever?</span>
+                    
+                    <div class="interactive-dock">
+                        <button class="btn" id="yes-btn" onclick="executeSuccessRoutine()">✨ YES! ✨</button>
+                        <button class="btn" id="no-btn" onmouseover="dodgeInteraction()" onclick="dodgeInteraction()">No</button>
+                    </div>
+                </div>
+
+                <div id="celebration-screen">
+                    <div style="font-size: 80px; animation: pulse 1s infinite;">💖</div>
+                    <h2 style="color: var(--accent-primary); font-size: 30px; margin-top: 15px; font-weight: 800;">Always & Forever!</h2>
+                    <p style="font-size: 15.5px; color: var(--text-main); line-height: 1.7; margin-top: 10px;">
+                        You just made me the happiest guy alive. I love you cleanly, completely, and endlessly. Let's build our wonderful future together! 🥰💍
+                    </p>
+                    <div class="signature-block">— Made with 💖 by Abir</div>
+                </div>
+
+            </div>
+
+        </main>
     </div>
 
     <script>
-        // Intelligent Image Recovery Framework
-        const paths = ["us.jpg", "us.JPG", "us.png", "us.PNG", "us.jpeg", "us.JPEG"];
-        let currentPathIndex = 0;
+        // Tab-View Content Routing Array Mapping
+        const panes = [
+            document.getElementById('pane-story'),
+            document.getElementById('pane-gallery'),
+            document.getElementById('pane-music'),
+            document.getElementById('pane-proposal')
+        ];
+        const triggers = document.querySelectorAll('.tab-trigger');
+        const shellTitle = document.getElementById('shell-title');
+        const shellSubtitle = document.getElementById('shell-subtitle');
 
-        function handleImageFallbacks(img) {
-            if (currentPathIndex < paths.length - 1) {
-                currentPathIndex++;
-                img.src = paths[currentPathIndex];
+        function switchView(targetIndex, contextSub) {
+            panes.forEach((pane, idx) => {
+                if(idx === targetIndex) {
+                    pane.classList.add('active-tab', 'active-pane');
+                } else {
+                    pane.classList.remove('active-tab', 'active-pane');
+                }
+                triggers[idx].classList.toggle('active-tab', idx === targetIndex);
+            });
+            shellSubtitle.innerText = contextSub;
+        }
+
+        // Auto-Recovery Engine for Target Extension Strings
+        const extensionMatrix = ["us.jpg", "us.JPG", "us.png", "us.PNG", "us.jpeg", "us.JPEG"];
+        let matrixPointer = 0;
+
+        function tryAlternativeImages(img) {
+            if (matrixPointer < extensionMatrix.length - 1) {
+                matrixPointer++;
+                img.src = extensionMatrix[matrixPointer];
             }
         }
 
-        function activateProposal() {
-            const intro = document.getElementById('intro-screen');
-            const proposal = document.getElementById('proposal-screen');
-            intro.style.opacity = '0';
-            setTimeout(() => {
-                intro.style.display = 'none';
-                proposal.style.display = 'block';
-                setTimeout(() => { proposal.style.opacity = '1'; }, 50);
-            }, 400);
+        // Absolute Boundary Calculation Kinetic Dodge Script
+        function dodgeInteraction() {
+            const noBtn = document.getElementById('no-btn');
+            const viewport = document.querySelector('.view-viewport');
+            
+            // Derive viewport inner dimensional mapping metrics
+            const safetyOffset = 20;
+            const lateralScope = viewport.clientWidth - noBtn.clientWidth - (safetyOffset * 2);
+            const verticalScope = viewport.clientHeight - noBtn.clientHeight - (safetyOffset * 2);
+            
+            const targetX = Math.floor(Math.random() * lateralScope) + safetyOffset;
+            const targetY = Math.floor(Math.random() * verticalScope) + safetyOffset;
+            
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = targetX + 'px';
+            noBtn.style.top = targetY + 'px';
         }
 
-        // Kinetic Escape Dodge Logic (Optimized for Mobile Touch + Web Desktop Mouse)
-        function teleportNoButton() {
-            const btn = document.getElementById('no-btn');
-            const card = document.querySelector('.premium-card');
-            
-            const padding = 35;
-            const horizontalBound = card.clientWidth - btn.clientWidth - (padding * 2);
-            const verticalBound = card.clientHeight - btn.clientHeight - (padding * 2);
-            
-            const destinationX = Math.floor(Math.random() * horizontalBound) + padding;
-            const destinationY = Math.floor(Math.random() * verticalBound) + padding;
-            
-            btn.style.position = 'absolute';
-            btn.style.left = destinationX + 'px';
-            btn.style.top = destinationY + 'px';
-        }
-
-        function engageCelebration() {
-            document.getElementById('proposal-screen').style.display = 'none';
+        // Terminal Unmount/Mount State Controller
+        function executeSuccessRoutine() {
+            document.getElementById('app-nav').style.display = 'none';
+            document.getElementById('interactive-prompt').style.display = 'none';
             document.getElementById('celebration-screen').style.display = 'block';
+            shellTitle.innerText = "Confirmed Agreement";
+            shellSubtitle.innerText = "Together Forever";
         }
 
-        // --- AMBIENT FALLING ROSE PETAL PARTICLE CORE ---
+        // --- BACKGROUND AMBIENT PROCEDURAL PARTICLE SYSTEM ---
         const canvas = document.getElementById('petalCanvas');
         const ctx = canvas.getContext('2d');
+        let particles = [];
 
-        let petalsArray = [];
-
-        function resizeCanvas() {
+        function adjustSurface() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        window.addEventListener('resize', adjustSurface);
+        adjustSurface();
 
-        class Petal {
+        class FlowParticle {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height - canvas.height;
-                this.size = Math.random() * 12 + 8;
-                this.speedY = Math.random() * 1.5 + 1;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.opacity = Math.random() * 0.5 + 0.3;
-                this.rotation = Math.random() * 360;
-                this.rotationSpeed = Math.random() * 1 - 0.5;
+                this.dimension = Math.random() * 11 + 6;
+                this.vY = Math.random() * 1.4 + 0.8;
+                this.vX = Math.random() * 0.8 - 0.4;
+                this.alpha = Math.random() * 0.4 + 0.2;
+                this.deg = Math.random() * 360;
+                this.spin = Math.random() * 1 - 0.5;
             }
-
-            update() {
-                this.y += this.speedY;
-                this.x += this.speedX;
-                this.rotation += this.rotationSpeed;
+            step() {
+                this.y += this.vY;
+                this.x += this.vX;
+                this.deg += this.spin;
                 if (this.y > canvas.height) {
                     this.y = -20;
                     this.x = Math.random() * canvas.width;
                 }
             }
-
-            draw() {
+            render() {
                 ctx.save();
                 ctx.translate(this.x, this.y);
-                ctx.rotate(this.rotation * Math.PI / 180);
-                ctx.fillStyle = `rgba(255, 71, 126, ${this.opacity})`;
-                
-                // Draw elegant curved petal vector geometries path
+                ctx.rotate(this.deg * Math.PI / 180);
+                ctx.fillStyle = `rgba(255, 56, 116, ${this.alpha})`;
                 ctx.beginPath();
-                ctx.ellipse(0, 0, this.size, this.size / 1.5, 0, 0, 2 * Math.PI);
+                ctx.ellipse(0, 0, this.dimension, this.dimension / 1.6, 0, 0, 2 * Math.PI);
                 ctx.fill();
                 ctx.restore();
             }
         }
 
-        function initPetals() {
-            petalsArray = [];
-            const maxPetals = window.innerWidth < 600 ? 25 : 55;
-            for (let i = 0; i < maxPetals; i++) {
-                petalsArray.push(new Petal());
-            }
+        function buildPool() {
+            particles = [];
+            const density = window.innerWidth < 600 ? 30 : 60;
+            for (let i = 0; i < density; i++) particles.push(new FlowParticle());
         }
 
-        function animatePetals() {
+        function runLoop() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < petalsArray.length; i++) {
-                petalsArray[i].update();
-                petalsArray[i].draw();
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].step();
+                particles[i].render();
             }
-            requestAnimationFrame(animatePetals);
+            requestAnimationFrame(runLoop);
         }
-
-        initPetals();
-        animatePetals();
+        buildPool();
+        runLoop();
     </script>
 </body>
 </html>
